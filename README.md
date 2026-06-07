@@ -45,7 +45,7 @@ All tests print a summary of successes, failures, and elapsed time, and verify t
 ```bash
 python reset_db.py
 ```
-Resets the databas.
+Resets the database.
 
 ### 5. Stop the Cluster
 ```bash
