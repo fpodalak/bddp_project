@@ -27,19 +27,13 @@ docker-compose up -d
 ```
 Wait ~15 seconds for the replica set (`rs0`) to elect a primary.
 
-### 2. Run the Console Application
-```bash
-python app.py
-```
-An interactive menu lets you view all 70 seats, book an available seat, or update an existing reservation. **Note:** `app.py` resets all seats on every startup (useful for demos).
-
-### 3. Run the GUI Application
+### 2. Run the GUI Application
 ```bash
 python gui_app.py
 ```
 Opens a Tkinter window showing a color-coded 10×7 seat grid. Green = available, Red = booked. Click any seat to book or update it. The GUI automatically reconnects if the current primary fails.
 
-### 4. Run the Stress Tests
+### 3. Run the Stress Tests
 ```bash
 python stress_test_1.py   # Sequential spam – one seat, 100 attempts
 python stress_test_2.py   # 5 concurrent clients booking random seats
@@ -47,7 +41,7 @@ python stress_test_3.py   # 2 aggressive clients racing to buy all 70 seats
 ```
 All tests print a summary of successes, failures, and elapsed time, and verify that no seat was double-booked.
 
-### 5. Stop the Cluster
+### 4. Stop the Cluster
 ```bash
 docker-compose down
 ```
