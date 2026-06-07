@@ -5,7 +5,6 @@ A distributed cinema seat reservation system backed by a **3-node MongoDB Replic
 
 ## Project Structure
 ```
-app.py              – Console-based reservation interface
 gui_app.py          – Tkinter GUI seat-grid interface
 stress_test_1.py    – Sequential spam test (single seat, many requests)
 stress_test_2.py    – Random concurrent load (5 clients, random seats)
