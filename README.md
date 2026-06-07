@@ -41,7 +41,13 @@ python stress_test_3.py   # 2 aggressive clients racing to buy all 70 seats
 ```
 All tests print a summary of successes, failures, and elapsed time, and verify that no seat was double-booked.
 
-### 4. Stop the Cluster
+### 4. Reset the Databse
+```bash
+python reset_db.py
+```
+Resets the databas.
+
+### 5. Stop the Cluster
 ```bash
 docker-compose down
 ```
