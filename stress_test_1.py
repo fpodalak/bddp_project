@@ -30,15 +30,12 @@ def run_stress_test_1(seat_id_to_spam, number_of_requests):
 
     # Fire off the requests as fast as the loop can run
     for i in range(number_of_requests):
-        # 1. Check if the seat is available
-        seat = collection.find_one({"_id": seat_id_to_spam})
-        
-        # 2. Try to book it
-        if not seat["is_booked"]:
-            collection.update_one(
-                {"_id": seat_id_to_spam},
-                {"$set": {"is_booked": True, "customer_name": f"SpamBot_Attempt_{i}"}}
-            )
+        # Atomic update: only books the seat if it is STILL free at the moment of writing
+        result = collection.update_one(
+            {"_id": seat_id_to_spam, "is_booked": False},
+            {"$set": {"is_booked": True, "customer_name": f"SpamBot_Attempt_{i}"}}
+        )
+        if result.modified_count == 1:
             success_count += 1
         else:
             fail_count += 1
