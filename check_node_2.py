@@ -1,14 +1,6 @@
-import pymongo
-
-# ============================================================
-# REPLICATION DEMO
-# This script bypasses the primary entirely and queries each
-# node directly to prove that data written to the primary has
-# been replicated to every secondary automatically.
-# ============================================================
+import pymongo\
 
 PORTS = [27017, 27018, 27019]
-
 print("=== REPLICATION CHECK: Reading each node independently ===\n")
 
 for port in PORTS:
@@ -16,11 +8,10 @@ for port in PORTS:
         client = pymongo.MongoClient(
             f"mongodb://localhost:{port}/?directConnection=true",
             serverSelectionTimeoutMS=1000,
-            readPreference="secondary"   # allow reads from secondaries
+            readPreference="secondary"
         )
         info = client.admin.command("isMaster")
         role = "PRIMARY  " if info.get("ismaster") else "secondary"
-
         collection = client["cinema_db"]["seats"]
         booked = list(collection.find({"is_booked": True}).sort("_id", 1))
 
