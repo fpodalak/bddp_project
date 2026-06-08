@@ -74,8 +74,6 @@ def book_seat():
     if not name:
         return
 
-    # Atomic write: only books seats that are STILL free at the moment of writing.
-    # This eliminates the read-then-write race condition.
     result = get_collection().update_many(
         {"_id": {"$in": requested_ids}, "is_booked": False},
         {"$set": {"is_booked": True, "customer_name": name}}
