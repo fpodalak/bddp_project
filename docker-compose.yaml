@@ -19,7 +19,6 @@ services:
     ports:
       - "27019:27017"
 
-  # This little helper script connects the 3 databases together automatically
   mongo-init:
     image: mongo:6.0
     depends_on:
