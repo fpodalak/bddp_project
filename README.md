@@ -10,7 +10,7 @@ stress_test_1.py    – Sequential spam test (single seat, many requests)
 stress_test_2.py    – Random concurrent load (5 clients, random seats)
 stress_test_3.py    – Full buy-out race (2 aggressive clients, all 70 seats)
 reset_db.py         – Utility to reset all seats to available
-check_node_2.py     – Utility to inspect the state of replica set node 2
+check_node_2.py     – Utility to do a replication check across nodes
 docker-compose.yaml – Spins up the 3-node MongoDB replica set
 ```
 
